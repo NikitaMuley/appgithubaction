@@ -1,22 +1,22 @@
-name: Python CI
+name: Python CI   #name :Workflow name; in github actions we need to specify data in key value pair
 
 # Trigger the workflow on any push to the main branch or pull request
-on:
-  push:
+on:                         # on : here we define Event that will trigger a workflow
+  push:                     # Event1 name : Push : trigger the workflow if there is push in main branch
     branches:
       - main
-  pull_request:
-    branches:
+  pull_request:              # Event 2 Name : pull_request : trigger the workflow if there is pull request on main brnach
+    branches:                  # Series of Events are in "OR" logic. So trigger the workflow if Event 1 or Event2 occurs
       - main
 
-jobs:
+jobs:            # We can have multiple jobs and we can name them and runs in containers
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest     # this job is running on ubuntu-latest container by github
 
     steps:
       # Step 1: Check out the code from the repository
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2        # predefined action from github actions
 
       # Step 2: Set up Python environment
       - name: Set up Python
